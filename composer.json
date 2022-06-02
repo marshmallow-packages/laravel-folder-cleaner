@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "marshmallow/laravel-folder-cleaner",
+    "description": "Clean folders using a command. This can be helpful if you have temporary files in your projects that need to be cleaned for saving storage.",
     "keywords": [
-        ":vendor_name",
+        "marshmallow",
         "laravel",
-        ":package_slug"
+        "laravel-folder-cleaner"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/marshmallow/laravel-folder-cleaner",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Stef van Esch",
+            "email": "stef@marshmallow.dev",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Marshmallow\\FolderCleaner\\": "src",
+            "Marshmallow\\FolderCleaner\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Marshmallow\\FolderCleaner\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -56,10 +56,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Marshmallow\\FolderCleaner\\FolderCleanerServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "FolderCleaner": "Marshmallow\\FolderCleaner\\Facades\\FolderCleaner"
             }
         }
     },
