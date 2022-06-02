@@ -14,7 +14,7 @@ class FolderCleanerCommand extends Command
     public function handle(): int
     {
         FolderCleaner::cleanFolders([
-            config('folder-cleaner.folders')
+            config('folder-cleaner.folders'),
         ]);
 
         return self::SUCCESS;

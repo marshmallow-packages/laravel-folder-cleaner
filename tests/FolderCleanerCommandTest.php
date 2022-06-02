@@ -18,11 +18,11 @@ afterEach(function () use ($test_folder) {
 });
 
 it('test it clears all the files in the folder', function () use ($test_folder, $test_file_count) {
-    $file = new Filesystem;
+    $file = new Filesystem();
     $this->assertCount($test_file_count, $file->files($test_folder));
 
     FolderCleaner::cleanFolders([
-        $test_folder
+        $test_folder,
     ]);
 
     $this->assertCount(0, $file->files($test_folder));

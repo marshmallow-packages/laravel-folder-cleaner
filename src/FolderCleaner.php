@@ -8,7 +8,7 @@ class FolderCleaner
 {
     public function cleanFolders(array $folders): void
     {
-        $filesystem = new Filesystem;
+        $filesystem = new Filesystem();
         collect($folders)->each(function ($folder) use ($filesystem) {
             $filesystem->cleanDirectory($folder);
         });

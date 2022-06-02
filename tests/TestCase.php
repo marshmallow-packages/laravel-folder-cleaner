@@ -3,8 +3,8 @@
 namespace Marshmallow\FolderCleaner\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Marshmallow\FolderCleaner\FolderCleanerServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
