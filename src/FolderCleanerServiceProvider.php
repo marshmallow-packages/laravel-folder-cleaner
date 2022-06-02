@@ -2,9 +2,9 @@
 
 namespace Marshmallow\FolderCleaner;
 
-use Marshmallow\FolderCleaner\Commands\FolderCleanerCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Marshmallow\FolderCleaner\Commands\FolderCleanerCommand;
 
 class FolderCleanerServiceProvider extends PackageServiceProvider
 {

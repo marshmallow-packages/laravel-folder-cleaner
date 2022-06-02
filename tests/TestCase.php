@@ -2,9 +2,9 @@
 
 namespace Marshmallow\FolderCleaner\Tests;
 
+use Orchestra\Testbench\TestCase as Orchestra;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Marshmallow\FolderCleaner\FolderCleanerServiceProvider;
-use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
