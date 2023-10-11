@@ -15,13 +15,13 @@ You can install the package via composer:
 composer require marshmallow/laravel-folder-cleaner
 ```
 
-You can publish the config file with:
+You can install the package by running the command below. This installation command will publish a config file where you can let the package know what you wish to delete.
 
 ```bash
-php artisan vendor:publish --tag="laravel-folder-cleaner-config"
+php artisan folder-cleaner:install
 ```
 
-This is the contents of the published config file:
+The following config file will now be published.
 
 ```php
 return [
@@ -32,17 +32,58 @@ return [
      * in the root directory of you project.
      */
     'folders' => [
-        // 'storage/app/livewire-tmp',
+        // '/storage/logs',
+        // '/storage' => [
+        //     'older_than' => '3 months',
+        //     'except' => [
+        //         'important.log',
+        //     ],
+        // ],
+        // '/storage/app' => [
+        //     'older_than' => '1 day',
+        //     'match' => '/^export_\d+\.xlsx$/',
+        // ],
     ],
-
 ];
 ```
 
 ## Usage
 
 ```bash
-php artisan folder-cleaner:clean
+php artisan folder-cleaner:clean {--dry-run} {--quiet}
 ```
+
+### Options
+
+In the config file you can specify a couple of settings to let the package know what should be cleaned.
+
+If you just provide a string for a folder, all the files in this folder will be deleted when the command is run. Please not, this doesn't work recursively, folders will not be deleted.
+
+```php
+return [
+    'folders' => [
+        // '/storage/logs',
+    ]
+];
+```
+
+You can also specify some settings as an array after the path of the folder. The example below will delete all files that are older then 3 months, match a patern of export\_{number}.xlsx except for export_1.xlsx.
+
+```php
+return [
+    'folders' => [
+        '/storage' => [
+            'older_than' => '3 months',
+            'match' => '/^export_\d+\.xlsx$/',
+            'except' => [
+                'export_1.xlsx',
+            ],
+        ],
+    ]
+];
+```
+
+If you need more options, please let us know. This was enough for our use case at the moment of creating this package.
 
 ## Testing
 
