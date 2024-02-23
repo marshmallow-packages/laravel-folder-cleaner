@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-folder-cleaner` will be documented in this file.
 
+## v1.2.0 - 2024-02-23
+
+**Full Changelog**: https://github.com/marshmallow-packages/laravel-folder-cleaner/compare/v1.1.0...v1.2.0
+
 ## v1.1.0 - 2023-10-11
 
 ### What's Changed
