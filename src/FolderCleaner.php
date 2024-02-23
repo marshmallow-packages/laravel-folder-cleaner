@@ -3,6 +3,7 @@
 namespace Marshmallow\FolderCleaner;
 
 use Carbon\Carbon;
+use ErrorException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Console\OutputStyle;
@@ -19,7 +20,7 @@ class FolderCleaner
             /** Check if the folders exists. Otherwise we filter them from the collection */
             $folder_path = Str::of(base_path($folder))->replace('//', '/');
             $exists = $filesystem->exists($folder_path);
-            if (! $exists) {
+            if (!$exists) {
                 $output->error('Folder doesnt exist: ' . $folder);
             }
 
@@ -30,7 +31,6 @@ class FolderCleaner
             $all_files_in_folder = $filesystem->files($folder_path);
 
             collect($all_files_in_folder)->filter(function (SplFileInfo $file) use ($settings) {
-
                 /** Filter the files by checking if they are old enough to delete */
                 $c_time = Carbon::createFromTimestamp($file->getCTime());
                 $older_then = Arr::get($settings, 'older_than');
@@ -44,7 +44,7 @@ class FolderCleaner
 
                 /** Reject files based on a reqular expression provided in the settings */
                 $match = Arr::get($settings, 'match');
-                if (! $match) {
+                if (!$match) {
                     return false;
                 }
 
@@ -64,6 +64,26 @@ class FolderCleaner
                     );
                 }
             });
+
+            if (Arr::get($settings, 'delete_folders') === true) {
+                $directories = $filesystem->directories($folder_path);
+                collect($directories)->filter(function ($directory) use ($filesystem, $settings) {
+                    $all_files_in_folder = $filesystem->files($directory);
+                    if (count($all_files_in_folder) == 0) {
+                        return true;
+                    }
+                    $file = $all_files_in_folder[0];
+                    $c_time = Carbon::createFromTimestamp($file->getCTime());
+                    $older_then = Arr::get($settings, 'older_than');
+                    return $c_time < $older_then;
+                })->each(function ($directory) use ($output, $filesystem) {
+                    try {
+                        $filesystem->deleteDirectory($directory);
+                    } catch (ErrorException $e) {
+                        $output->error($e->getMessage());
+                    }
+                });
+            }
         });
     }
 

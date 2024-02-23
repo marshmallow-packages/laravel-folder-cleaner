@@ -83,6 +83,18 @@ return [
 ];
 ```
 
+If you have a directory which holds temporary directories that can deleted with all its content, you can use the `delete_folders` options. In the example below, all files in the download directory AND all sub directories in the download directory will be deleted once they are 7 days old.
+```php
+return [
+    'folders' => [
+         '/storage/app/public/download' => [
+            'delete_folders' => true,
+            'older_than' => '7 days',
+        ],
+    ]
+];
+```
+
 If you need more options, please let us know. This was enough for our use case at the moment of creating this package.
 
 ## Testing
