@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-folder-cleaner` will be documented in this file.
 
+## v1.3.0 - 2025-02-08
+
+### What's Changed
+
+* 16 fix issue links folder cleaner by @stefvanesch in https://github.com/marshmallow-packages/laravel-folder-cleaner/pull/17
+* (deps) added support for Laravel 12 by @stefvanesch in https://github.com/marshmallow-packages/laravel-folder-cleaner/pull/18
+
+### New Contributors
+
+* @stefvanesch made their first contribution in https://github.com/marshmallow-packages/laravel-folder-cleaner/pull/17
+
+**Full Changelog**: https://github.com/marshmallow-packages/laravel-folder-cleaner/compare/v1.2.0...v1.3.0
+
 ## v1.2.0 - 2024-02-23
 
 **Full Changelog**: https://github.com/marshmallow-packages/laravel-folder-cleaner/compare/v1.1.0...v1.2.0
