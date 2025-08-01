@@ -12,7 +12,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class FolderCleaner
 {
-    public function cleanFolders(array $folders, bool $dry_run = false, OutputStyle $output = null): void
+    public function cleanFolders(array $folders, bool $dry_run = false, ?OutputStyle $output = null): void
     {
         $folders = $this->formatFolderStructureArray($folders);
         $filesystem = new Filesystem();
