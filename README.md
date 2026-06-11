@@ -1,8 +1,10 @@
+![alt text](https://marshmallow.dev/cdn/media/logo-red-237x46.png "marshmallow.")
+
 # Laravel Folder Cleaner
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/marshmallow/laravel-folder-cleaner.svg?style=flat-square)](https://packagist.org/packages/marshmallow/laravel-folder-cleaner)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/marshmallow/laravel-folder-cleaner/run-tests?label=tests)](https://github.com/marshmallow/laravel-folder-cleaner/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/marshmallow/laravel-folder-cleaner/Check%20&%20fix%20styling?label=code%20style)](https://github.com/marshmallow/laravel-folder-cleaner/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Tests](https://img.shields.io/github/actions/workflow/status/marshmallow-packages/laravel-folder-cleaner/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/marshmallow-packages/laravel-folder-cleaner/actions/workflows/run-tests.yml)
+[![Check & fix styling](https://img.shields.io/github/actions/workflow/status/marshmallow-packages/laravel-folder-cleaner/php-cs-fixer.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/marshmallow-packages/laravel-folder-cleaner/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/marshmallow/laravel-folder-cleaner.svg?style=flat-square)](https://packagist.org/packages/marshmallow/laravel-folder-cleaner)
 
 Clean folders using a command. This can be helpful if you have temporary files in your projects that need to be cleaned for saving storage.
@@ -50,8 +52,10 @@ return [
 ## Usage
 
 ```bash
-php artisan folder-cleaner:clean {--dry-run} {--quiet}
+php artisan folder-cleaner:clean {--dry-run}
 ```
+
+Run with `--dry-run` to print the files that would be deleted without actually removing them.
 
 ### Options
 
@@ -113,7 +117,7 @@ Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTI
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please report security vulnerabilities by email to [stef@marshmallow.dev](mailto:stef@marshmallow.dev) rather than via the public issue tracker.
 
 ## Credits
 
