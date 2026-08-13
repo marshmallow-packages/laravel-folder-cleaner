@@ -21,13 +21,13 @@ class FolderCleaner
             $folder_path = Str::of(base_path($folder))->replace('//', '/');
             $exists = $filesystem->exists($folder_path);
             if (! $exists) {
-                $output->error('Folder doesnt exist: ' . $folder);
+                $output?->error('Folder doesnt exist: ' . $folder);
             }
 
             return $exists;
         })->each(function ($settings, $folder) use ($filesystem, $output, $dry_run) {
             $folder_path = Str::of(base_path($folder))->replace('//', '/');
-            $output->info('Cleaning folder: ' . $folder);
+            $output?->info('Cleaning folder: ' . $folder);
             $all_files_in_folder = $filesystem->files($folder_path);
 
             collect($all_files_in_folder)->filter(function (SplFileInfo $file) use ($settings) {
@@ -57,7 +57,7 @@ class FolderCleaner
 
                 /** Delete the file or output the path if we're in dry-run mode */
                 if ($dry_run) {
-                    $output->info('Delete: ' . $file->getPathname());
+                    $output?->info('Delete: ' . $file->getPathname());
                 } else {
                     $filesystem->delete(
                         $file->getPathname()
@@ -81,7 +81,7 @@ class FolderCleaner
                     try {
                         $filesystem->deleteDirectory($directory);
                     } catch (ErrorException $e) {
-                        $output->error($e->getMessage());
+                        $output?->error($e->getMessage());
                     }
                 });
             }
